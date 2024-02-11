@@ -1,6 +1,6 @@
 <nav class="navbar">
         <div class="logo">
-            <img src="../img/ResiReviveLogo.jpg" alt="Logo">
+            <a href="index.php"><img src="../img/ResiReviveLogo.jpg" alt="Logo"></a>
         </div>
         <div class="search">
             <input type="text" placeholder="Buscar">
@@ -13,6 +13,6 @@
             <a href="#">Notificações</a>
         </div>
         <div class="login">
-            <button>Entrar</button>
+            <a href="login.php" id="entrar"><button>Entrar</button></a>
         </div>
     </nav>
