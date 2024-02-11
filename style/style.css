@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.search button {
+    padding: 5px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #000; /* Cor preta para os textos */
+    margin: 0 10px;
+    text-decoration: none; /* Removendo sublinhado */
+}
+
+.login button {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    cursor: pointer;
+}
