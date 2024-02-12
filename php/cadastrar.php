@@ -12,19 +12,26 @@
 </head>
 
 <body>
-    <div class="login-container">
+    <div id="login-container">
         </form>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="margin-top: 30px;">
                 <label for="email">E-mail</label>
             </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name surname" style="margin-top: 30px;">
+                <label for="email">Nome completo</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Telefone" style="margin-top: 30px;">
+                <label for="password">Telefone</label>
+            </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" style="margin-top: 30px;">
                 <label for="password">Senha</label>
             </div>
-            <button type="submit" id="entrar-login">Entrar</button>
+            <button type="submit" id="cadastrar">Cadastrar-se</button>
         </form>
-        <center><a>Não tem conta? <a href="cadastrar.php" style="text-decoration: none;">Cadastre-se</a></a></center>
     </div>
 </body>
 </html>
