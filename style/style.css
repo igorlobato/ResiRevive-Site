@@ -66,10 +66,36 @@ body {
 #bannerCarousel{
     max-width: 500px;
     margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
+.container{
+    max-width: 1000px;
+    justify-content: flex-end;
+}
 
+.row .col-md-4 {
+    margin-bottom: 20px; 
+}
 
+.row .col-md-4 a {
+    display: block; 
+}
+
+.row .col-md-4 img {
+    width: 100%; 
+    margin-right: 0px; 
+    margin-left: 0px; 
+}
+
+.row .col-md-4:last-child {
+    margin-right: 0;
+}
+
+.row.mt-4 {
+    margin-bottom: 20px;
+}
 
 form {
     display: flex;

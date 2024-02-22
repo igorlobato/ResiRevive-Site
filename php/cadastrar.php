@@ -15,23 +15,26 @@
     <div id="login-container">
         </form>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="margin-top: 30px;">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" style="margin-top: 30px;">
                 <label for="email">E-mail</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name surname" style="margin-top: 30px;">
+                <input type="email" class="form-control" id="nome" placeholder="name surname" style="margin-top: 30px;">
                 <label for="email">Nome completo</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Telefone" style="margin-top: 30px;">
+                <input type="password" class="form-control" id="telefone" placeholder="Telefone" style="margin-top: 30px;">
                 <label for="password">Telefone</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" style="margin-top: 30px;">
+                <input type="password" class="form-control" id="senha" placeholder="Password" style="margin-top: 30px;">
                 <label for="password">Senha</label>
             </div>
             <button type="submit" id="cadastrar">Cadastrar-se</button>
         </form>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src ="../javascript/main.js"></script>
 </body>
 </html>
