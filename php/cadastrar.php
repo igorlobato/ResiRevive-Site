@@ -23,18 +23,22 @@
                 <label for="email">Nome completo</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="telefone" placeholder="Telefone" style="margin-top: 30px;">
+                <input type="telefone" class="form-control" id="telefone" placeholder="Telefone" style="margin-top: 30px;">
                 <label for="password">Telefone</label>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="senha" placeholder="Password" style="margin-top: 30px;">
                 <label for="password">Senha</label>
             </div>
+            <div class="form-floating">
+                <input type="endereco" class="form-control" id="endereco" placeholder="Endereco" style="margin-top: 30px;">
+                <label for="password">Endereço</label>
+            </div>
             <button type="submit" id="cadastrar">Cadastrar-se</button>
         </form>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src ="../javascript/main.js"></script>
+    <script src ="../js/main.js"></script>
 </body>
 </html>

@@ -26,5 +26,7 @@
         </form>
         <center><a>Não tem conta? <a href="cadastrar.php" style="text-decoration: none;">Cadastre-se</a></a></center>
     </div>
+
+    <script src ="../js/main.js"></script>
 </body>
 </html>
