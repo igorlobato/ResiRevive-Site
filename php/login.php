@@ -1,3 +1,65 @@
+<?php
+
+	include_once("conexao.php");
+?>
+
+<?php 
+include('conexao.php');
+
+if(isset($_POST['email']) || isset($_POST['senha'])) {
+
+	if(strlen($_POST['nome']) == 0){
+		echo "Preencha seu e-mail";
+	} else if(strlen($_POST['senha']) == 0){
+		echo "Preencha sua senha";
+	} else{
+		$email = $_POST['nome'];
+		$senha = $_POST['senha'];
+
+		$sql_code = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
+		$stmt = $conn->prepare($sql_code);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->execute();
+
+		$quantidade = $stmt->rowCount();
+
+		if($quantidade == 1){
+			$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			if(!isset($_SESSION)){
+				session_start();
+			}
+			$_SESSION['id'] = $usuario['id'];
+			$_SESSION['email'] = $usuario['email'];
+			$_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['telefone'] = $usuario['telefone'];
+            $_SESSION['senha'] = $usuario['senha'];
+			$_SESSION['adm'] = $usuario['adm'];
+			$_SESSION['foto'] = $usuario['foto'];
+            $_SESSION['online'] = $usuario['online'];
+            $_SESSION['token'] = $usuario['token'];
+            $_SESSION['creation'] = $usuario['creation'];
+            $_SESSION['endereco'] = $usuario['endereco'];
+			
+			header("Location: index.php");
+		} 
+		
+		else{
+			echo "Falha ao logar! E-mail ou senha incorretos";
+		}
+	}
+}
+?>
+
+<?php
+session_start();
+if(isset($_SESSION['mensagem'])) {
+    echo '<p class="mensagem">' . $_SESSION['mensagem'] . '</p>';
+    unset($_SESSION['mensagem']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +75,14 @@
 
 <body>
     <div class="login-container">
-        </form>
+        <form action="" method="POST">
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="margin-top: 30px;">
-                <label for="email">E-mail</label>
+                <input name = "nome" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="margin-top: 30px;">
+                <label for="email" style="margin-top: 30px;">E-mail</label></input>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" style="margin-top: 30px;">
-                <label for="password">Senha</label>
+                <input name="senha" type="password" class="form-control" id="floatingPassword" placeholder="Password" style="margin-top: 30px;">
+                <label for="password" style="margin-top: 30px;">Senha</label></input>
             </div>
             <button type="submit" id="entrar-login">Entrar</button>
         </form>
