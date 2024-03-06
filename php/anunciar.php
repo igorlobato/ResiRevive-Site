@@ -4,7 +4,14 @@
 	if(!isset($_SESSION)){
 		session_start();
 	}
+
+    $userId = isset($_SESSION['id']) ? $_SESSION['id'] : 'null';
+    $userLocal = isset($_SESSION['endereco']) ? $_SESSION['endereco'] : 'null';
 ?>
+<script>
+    var userId = <?php echo $userId; ?>;
+    var userLocal = '<?php echo $userLocal; ?>'
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +24,8 @@
     <link rel = "stylesheet" href = "../style/style.css">
     <link rel="icon" href="../img/ResiReviveLogo.jpg" style="border-radius: 50px;">
     <?php include 'estrutura.php';?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src ="../js/main.js"></script>
 </head>
 <body>
     <div class="lista-anuncio">
@@ -25,45 +34,45 @@
                 <h2>Selecione as características do que você quer anunciar.</h2><br>
 
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownTipo" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="tipo" data-bs-toggle="dropdown" aria-expanded="false">
                         Tipo
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownTipo">
-                        <li><a class="dropdown-item" href="#">Plástico</a></li>
-                        <li><a class="dropdown-item" href="#">Papel</a></li>
-                        <li><a class="dropdown-item" href="#">Papelão</a></li>
-                        <li><a class="dropdown-item" href="#">Metais</a></li>
-                        <li><a class="dropdown-item" href="#">Vidros</a></li>
-                        <li><a class="dropdown-item" href="#">Eletrônicos</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Plástico">Plástico</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Papel">Papel</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Papelão">Papelão</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Metais">Metais</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Vidros">Vidros</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Eletrônicos">Eletrônicos</a></li>
                     </ul>
                 </div>
 
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCondicao" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="condicao" data-bs-toggle="dropdown" aria-expanded="false">
                         Condição
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownCondicao">
-                        <li><a class="dropdown-item" href="#">Novo</a></li>
-                        <li><a class="dropdown-item" href="#">Usado</a></li>
-                        <li><a class="dropdown-item" href="#">Recondicionado</a></li>
-                        <li><a class="dropdown-item" href="#">Ruim</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Novo">Novo</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Usado">Usado</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Recondicionado">Recondicionado</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Ruim">Ruim</a></li>
                     </ul>
                 </div>
 
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCor" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="cor" data-bs-toggle="dropdown" aria-expanded="false">
                         Cor
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownCor">
-                        <li><a class="dropdown-item" href="#">Vermelho</a></li>
-                        <li><a class="dropdown-item" href="#">Branco</a></li>
-                        <li><a class="dropdown-item" href="#">Preto</a></li>
-                        <li><a class="dropdown-item" href="#">Verde</a></li>
-                        <li><a class="dropdown-item" href="#">Amarelo</a></li>
-                        <li><a class="dropdown-item" href="#">Cinza</a></li>
-                        <li><a class="dropdown-item" href="#">Rosa</a></li>
-                        <li><a class="dropdown-item" href="#">Transparente</a></li>
-                        <li><a class="dropdown-item" href="#">Outro</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Vermelho">Vermelho</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Branco">Branco</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Preto">Preto</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Verde">Verde</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Amarelo">Amarelo</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Cinza">Cinza</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Rosa">Rosa</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Transparente">Transparente</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="Outro">Outro</a></li>
                     </ul>
                 </div>
 
@@ -82,61 +91,31 @@
                     <input type="text" class="form-control" id="preco">
                 </div>
             </div>
+                <div class="mb-3">
+                    <label for="imagem1" class="form-label">Imagem 1</label>
+                    <input type="file" class="form-control" id="imagem1" name="imagem1" accept="image/*">
+                </div>
 
-            
-            <div class="mb-3">
-                <label for="images" class="form-label">Imagens</label>
-                <div id="myDropzone" class="dropzone"></div>
-            </div>
-            <input type="hidden" id="foto1" name="foto1" value="">
-            <input type="hidden" id="foto2" name="foto2" value="">
-            <input type="hidden" id="foto3" name="foto3" value="">
-            <input type="hidden" id="foto4" name="foto4" value="">
-            <input type="hidden" id="foto5" name="foto5" value="">
-            
-            <button type="button" id="envioanuncio">Enviar Anuncio</button>
-        </form>
-    </div>
+                <div class="mb-3">
+                    <label for="imagem2" class="form-label">Imagem 2</label>
+                    <input type="file" class="form-control" id="imagem2" name="imagem2" accept="image/*">
+                </div>
 
-    <script>
-        Dropzone.autoDiscover = false;
-        
-        var myDropzone = new Dropzone("#myDropzone", {
-            url: "../img/produtos",  // Specify the URL to handle file uploads
-            paramName: "file",       // The name that will be used to transfer the file
-            maxFiles: 5,             // Maximum number of files
-            acceptedFiles: "image/*", // Allow only image files
-            addRemoveLinks: true      // Show remove links for uploaded files
-        });
+                <div class="mb-3">
+                    <label for="imagem3" class="form-label">Imagem 3</label>
+                    <input type="file" class="form-control" id="imagem3" name="imagem3" accept="image/*">
+                </div>
 
-        myDropzone.on("success", function (file, response) {
-            // Handle the response from the server
-            console.log(response); // You may need to adjust this based on your server's response
-            
-            // Assuming your server responds with the filename or some identifier for the uploaded file
-            // Update the corresponding hidden input field with the filename or identifier
-            switch (file.index) {
-                case 0:
-                    document.getElementById("foto1").value = response.filename;
-                    break;
-                case 1:
-                    document.getElementById("foto2").value = response.filename;
-                    break;
-                case 2:
-                    document.getElementById("foto3").value = response.filename;
-                    break;
-                case 3:
-                    document.getElementById("foto4").value = response.filename;
-                    break;
-                case 4:
-                    document.getElementById("foto5").value = response.filename;
-                    break;
-                default:
-                    // Handle unexpected case
-                    break;
-            }
-        });
-                <button type="submit" id="envioanuncio">Enviar Anuncio</button>
+                <div class="mb-3">
+                    <label for="imagem4" class="form-label">Imagem 4</label>
+                    <input type="file" class="form-control" id="imagem4" name="imagem4" accept="image/*">
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagem5" class="form-label">Imagem 5</label>
+                    <input type="file" class="form-control" id="imagem5" name="imagem5" accept="image/*">
+                </div>
+            <button type="submit" id="envioanuncio">Enviar Anuncio</button>
         </form>
     </div>
 
@@ -146,8 +125,5 @@
         element.style.height = (element.scrollHeight) + 'px';
         }
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropzone@5.9.3/dist/dropzone.css">
-    <script src="https://cdn.jsdelivr.net/npm/dropzone@5.9.3/dist/dropzone.js"></script>
-
 </body>
 </html>

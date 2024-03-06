@@ -44,7 +44,7 @@ $(function(){
         });
     });
 
-    $('#cadastrarproduto').on('click', function(event){
+    $('#envioanuncio').on('click', function(event){
         console.log('Botão de cadastrar produto clicado');
         event.preventDefault();
 
@@ -53,22 +53,31 @@ $(function(){
         let dataOnlineFormatada = dataAtual.toISOString();
         let dataCreationFormatada = dataAtual.toISOString();
 
+        let preco = parseFloat($('#preco').val());
+
+        let tipoSelecionado = $('.dropdown #tipo').text().trim();
+        let condicaoSelecionada = $('.dropdown #condicao').text().trim();
+        let corSelecionada = $('.dropdown #cor').text().trim();
+
+        // Verificar se algum valor de dropdown não foi selecionado
+        
+
         let produto = {
-            tipo: $('#email').val(),
-            titulo: $('#nome').val(),
-            descricao: $('#telefone').val(),
+            tipo: tipoSelecionado,
+            titulo: $('#titulo').val(),
+            descricao: $('#descricao').val(),
             data: dataOnlineFormatada,
             hora: dataCreationFormatada,
-            condicao: 0,
-            cor: "",
-            preco: $('#preco').val(),
-            local: $('#local').val(),
-            foto1: $('#foto1').val(),
-            foto2: $('#foto1').val(),
-            foto3: $('#foto1').val(),
-            foto4: $('#foto1').val(),
-            foto5: $('#foto1').val(),
-            id_dono: $('#').val(),
+            condicao: condicaoSelecionada,
+            cor: corSelecionada,
+            preco: preco,
+            local: userLocal,
+            foto1: $('#imagem1').val(),
+            foto2: $('#imagem2').val(),
+            foto3: $('#imagem3').val(),
+            foto4: $('#imagem4').val(),
+            foto5: $('#imagem5').val(),
+            id_dono: userId,
         };
 
         $.ajax({
@@ -78,12 +87,13 @@ $(function(){
             dataType: "json",
             data: JSON.stringify(produto),
             success: function(newProduto) {
-                let userData = '<p>email: ' + usuario.email + ', nome: ' + usuario.nome + ', telefone: ' + usuario.telefone +
-                    ', senha: ' + usuario.senha + ', adm: ' + usuario.adm + ', nota: ' + usuario.nota + ', foto: ' + usuario.foto +
-                    ', online: ' + usuario.online + ', token: ' + usuario.token + ', creation: ' + usuario.creation + 
-                    ', endereco: ' + usuario.endereco +'</p>';
-                $('#dados-usuario-cadastrado').html(userData);
-                alert('Usuário cadastrado com sucesso.');
+                let userData = '<p>tipo: ' + produto.tipo + ', titulo: ' + produto.titulo + ', descricao: ' + produto.descricao +
+                    ', data: ' + produto.data + ', hora: ' + produto.hora + ', condicao: ' + produto.condicao + ', cor: ' + produto.cor +
+                    ', preco: ' + produto.preco + ', local: ' + produto.local + ', foto1: ' + produto.imagem1 + 
+                    ', foto2: ' + produto.imagem2 + ', foto3: ' + produto.imagem3 +', foto4: ' + produto.imagem4 +
+                    ', foto5: ' + produto.imagem5 + '. id_dono: ' + produto.id_dono + '</p>';
+                $('#dados-produtos-cadastrado').html(userData);
+                alert('Produto cadastrado com sucesso.');
                 window.location.href = "../php/index.php";
             },
             error: function() {
