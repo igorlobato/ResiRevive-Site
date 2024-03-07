@@ -17,8 +17,54 @@
     <link rel = "stylesheet" href = "../style/style.css">
     <link rel="icon" href="../img/ResiReviveLogo.jpg" style="border-radius: 50px;">
     <?php include 'estrutura.php';?>
+    <?php include 'estruturaconta.php';?>
 </head>
+
 <body>
-    
+<div class="conteudo">
+    <div class="lista-anuncio anuncioconta">
+        <form>
+            <div class="texto-anuncio">
+                <h2>Meus Dados.</h2><br>
+
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">E-mail</label>
+                    <input type="text" class="form-control" id="titulo">
+                </div>
+
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="titulo">
+                </div>
+
+                <div class="mb-3">
+                    <label for="preco" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" id="preco">
+                </div>
+
+                <div class="mb-3">
+                    <label for="preco" class="form-label">Senha</label>
+                    <input type="text" class="form-control" id="preco">
+                </div>
+
+                <div class="mb-3">
+                    <label for="preco" class="form-label">Endereço</label>
+                    <input type="text" class="form-control" id="preco">
+                </div>
+
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Foto</label>
+                    <input type="text" class="form-control" id="titulo">
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagem1" class="form-label">Alterar Foto de Perfil</label>
+                    <input type="file" class="form-control" id="imagem1" name="imagem1" accept="image/*">
+                </div>
+
+            <button type="submit" id="envioanuncio">Alterar Dados</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

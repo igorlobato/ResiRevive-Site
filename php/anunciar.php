@@ -29,7 +29,7 @@
 </head>
 <body>
     <div class="lista-anuncio">
-        <form>
+        <form id="formProduto" enctype="multipart/form-data">
             <div class="texto-anuncio">
                 <h2>Selecione as características do que você quer anunciar.</h2><br>
 

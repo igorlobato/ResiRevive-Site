@@ -1,4 +1,8 @@
 $(function(){
+
+    var $produtos = $('#produtos');
+    var urlParams = new URLSearchParams(window.location.search);
+    var produtosId = urlParams.get('id');
     
     $('#cadastrar').on('click', function(event){
         console.log('Botão de cadastrar clicado');
@@ -6,8 +10,8 @@ $(function(){
 
         let dataAtual = new Date();
 
-        let dataOnlineFormatada = dataAtual.toISOString();
-        let dataCreationFormatada = dataAtual.toISOString();
+        let dataOnlineFormatada = dataAtual.toLocaleDateString();
+        let dataCreationFormatada = dataAtual.toLocaleTimeString();
 
         let usuario = {
             email: $('#email').val(),
@@ -50,8 +54,8 @@ $(function(){
 
         let dataAtual = new Date();
 
-        let dataOnlineFormatada = dataAtual.toISOString();
-        let dataCreationFormatada = dataAtual.toISOString();
+        let dataOnlineFormatada = dataAtual.toLocaleDateString(); // Ajuste para formatar a data
+        let dataCreationFormatada = dataAtual.toLocaleTimeString();
 
         let preco = parseFloat($('#preco').val());
 
@@ -101,4 +105,49 @@ $(function(){
             }
         });
     });
+
+    if (produtosId) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3000/posts/' + produto.id,
+            success: function(produto) {
+                $produto.append('<li>Tipo: ' + produto.tipo +
+                    '<br>Titulo: ' + produto.titulo +
+                    '<br><br><img src="' + produto.foto1 + '" alt="Imagem" class="foto"><br>' +
+                    '<br>Data: ' + produto.data +
+                    '<br>Hora: ' + produto.hora +
+                    '<br>Hora: ' + produto.condicao +
+                    '<br>Postador: ' + produto.id_dono +
+                    '<br></li>');
+            },
+            error: function() {
+                alert('Erro ao carregar o post');
+            }
+        });
+    } else {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3000/produtos',
+                success: function(produtos) {
+                    $.each(produtos, function(i, produto) {
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://localhost:3000/produtos/' + produto.id,
+                            success: function(listaprodutos) {
+                                $produtos.append('<li>Tipo: ' + produto.tipo +
+                                '<br>Titulo: ' + produto.titulo +
+                                '<br>Descricao: ' + produto.descricao +
+                                '<br><br><img src="' + produto.foto1 + '" alt="Imagem" class="foto"><br>' +
+                                '<br>Data: ' + produto.data +
+                                '<br>Hora: ' + produto.hora +
+                                '<br>Hora: ' + produto.condicao +
+                                '<br></li><br>');
+                            },
+                        });
+                    })},
+                    error: function() {
+                        alert('Erro ao carregar produtos');
+                    }
+                });
+            }
 });

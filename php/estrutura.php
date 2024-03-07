@@ -20,7 +20,7 @@
     </div>
     <div class="menu">
         <a href="#" style="margin-left: 400px;">Santarém | PA</a>
-        <a href="#" style="margin-left: 50px;">Meus Anúncios</a>
+        <a href="meusprodutos.php" style="margin-left: 50px;">Meus Anúncios</a>
         <a href="#" style="margin-left: 50px;">Conversas</a>
         <a href="#" style="margin-right: 95px; margin-left: 50px;">Notificações</a>
     </div>

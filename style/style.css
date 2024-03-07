@@ -185,3 +185,64 @@ button {
     display: block;
     margin-top: 50px;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.anuncioconta{
+    width: 80%;
+    float: center;
+    margin-top: auto;
+}
+
+.conteudo{
+    margin-left: 320px; /* Largura da barra lateral + espaço entre a barra lateral e o conteúdo */
+    padding: 2  0px;
+}
+
+.barralateralconta {
+    height: 100%;
+    width: 300px;
+    background-color: #f7f7f7;
+    display: flex; 
+    flex-direction: column;
+    position:absolute;
+}
+
+.barralateralconta ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 100px;
+}
+
+.barralateralconta li {
+    padding: 10px;
+    text-align: center; /* Centralizar horizontalmente */
+    line-height: 1,5; /* Ajuste o espaço entre as linhas conforme necessário */
+}
+
+.palavrasbarralateral {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* produtos */
+
+.main-content {
+    margin-left: 0%;
+    padding: 5px;
+  }  
+
+.produtoslista{
+    margin: auto;
+    border-radius: 5%;
+}
+
+.foto{
+    width: 200px;
+    height: 200px;
+}
