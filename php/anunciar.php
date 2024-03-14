@@ -46,7 +46,7 @@
                         <li><a class="dropdown-item" href="#" data-value="Eletrônicos">Eletrônicos</a></li>
                     </ul>
                 </div>
-
+                <br>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="condicao" data-bs-toggle="dropdown" aria-expanded="false">
                         Condição
@@ -58,7 +58,7 @@
                         <li><a class="dropdown-item" href="#" data-value="Ruim">Ruim</a></li>
                     </ul>
                 </div>
-
+                <br>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="cor" data-bs-toggle="dropdown" aria-expanded="false">
                         Cor
@@ -75,7 +75,7 @@
                         <li><a class="dropdown-item" href="#" data-value="Outro">Outro</a></li>
                     </ul>
                 </div>
-
+                <br>
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título</label>
                     <input type="text" class="form-control" id="titulo">
@@ -124,6 +124,18 @@
         element.style.height = 'auto';
         element.style.height = (element.scrollHeight) + 'px';
         }
+
+         // Seleciona todos os itens do menu suspenso
+            var dropdownItems = document.querySelectorAll('.dropdown-menu a.dropdown-item');
+
+        // Adiciona um ouvinte de eventos de clique a cada item
+        dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                // Atualiza o texto do botão com o valor do item clicado
+                var dropdownToggle = this.closest('.dropdown').querySelector('.dropdown-toggle');
+                dropdownToggle.textContent = this.textContent;
+            });
+        });
     </script>
 </body>
 </html>

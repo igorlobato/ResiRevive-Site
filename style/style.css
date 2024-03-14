@@ -161,11 +161,17 @@ button {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Anunciar.php*/ 
+.dropdown-toggle{
+    background-color: #ffffff;
+    color: #000;
+}
+
 .lista-anuncio{
     color: #333;
     margin: auto;
     width: 1000px;
-    height: 800px;
+    height: auto;
     background-color: rgb(204, 255, 255);
     padding: 20px;
     border-radius: 100px;
@@ -192,15 +198,28 @@ html, body {
     padding: 0;
 }
 
+/* Conta.php */
+
 .anuncioconta{
     width: 80%;
     float: center;
     margin-top: auto;
+    height: auto;
 }
+
+.fotoconta{
+    width: 250px;
+    margin: auto;
+    float: center;
+    border-radius: 200px;
+}
+
 
 .conteudo{
     margin-left: 320px; /* Largura da barra lateral + espaço entre a barra lateral e o conteúdo */
     padding: 2  0px;
+    height: auto; /* Isso permite que a altura seja ajustada dinamicamente com base no conteúdo */
+    overflow: auto;
 }
 
 .barralateralconta {
@@ -240,6 +259,8 @@ html, body {
 .produtoslista{
     margin: auto;
     border-radius: 5%;
+    height: auto; /* Isso permite que a altura seja ajustada dinamicamente com base no conteúdo */
+    overflow: auto;
 }
 
 .foto{

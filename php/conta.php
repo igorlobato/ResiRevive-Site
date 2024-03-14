@@ -28,33 +28,40 @@
                 <h2>Meus Dados.</h2><br>
 
                 <div class="mb-3">
-                    <label for="titulo" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" id="titulo">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="text" class="form-control" id="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="titulo" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="titulo">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="preco" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" id="preco">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" value="<?php echo isset($_SESSION['telefone']) ? $_SESSION['telefone'] : ''; ?>">
+                </div>
+
+                <div cclass="form-floating"">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha" value="<?php echo isset($_SESSION['senha']) ? $_SESSION['senha'] : ''; ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="preco" class="form-label">Senha</label>
-                    <input type="text" class="form-control" id="preco">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" value="<?php echo isset($_SESSION['endereco']) ? $_SESSION['endereco'] : ''; ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="preco" class="form-label">Endereço</label>
-                    <input type="text" class="form-control" id="preco">
+                    <label for="foto" class="form-label">Foto</label>
                 </div>
-
-                <div class="mb-3">
-                    <label for="titulo" class="form-label">Foto</label>
-                    <input type="text" class="form-control" id="titulo">
+                
+                <div class="fotoconta">
+                    <?php if(isset($_SESSION['foto']) && !empty($_SESSION['foto'])): ?>
+                        <img src="<?php echo $_SESSION['foto']; ?>" class="form-control" id="foto" name="foto" alt="Foto de Perfil">
+                    <?php else: ?>
+                        <img src="../img/fotos/fotopadrao.webp" class="fotoconta" id="foto" name="foto" alt="Foto de Perfil Padrão">
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
@@ -62,7 +69,8 @@
                     <input type="file" class="form-control" id="imagem1" name="imagem1" accept="image/*">
                 </div>
 
-            <button type="submit" id="envioanuncio">Alterar Dados</button>
+                <button type="submit" id="envioanuncio">Alterar Dados</button>
+            </div>
         </form>
     </div>
 </div>
