@@ -283,7 +283,7 @@ html, body {
 
 .conteudodireita{
     margin-left: 10%;
-    overflow: auto;
+    justify-content: center;
 }
 
 .produtoslista{
@@ -292,6 +292,19 @@ html, body {
     height: auto; /* Isso permite que a altura seja ajustada dinamicamente com base no conteúdo */
     overflow: auto;
 }
+
+.titulo {
+    font-size: 24px; /* Tamanho da fonte */
+    color: #333; /* Cor do texto */
+    font-weight: bold; /* Peso da fonte (negrito) */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.preco {
+    color: #333; /* Cor do texto */
+    font-weight: bold; /* Peso da fonte (negrito) */
+}
+
 
 .foto{
     width: 200px;
