@@ -3,12 +3,22 @@ body {
     padding: 0;
 }
 
+/* Barra do topo */
 .navbar {
     background-color: #ffffff;
     color: #fff;
     display: flex;
     justify-content: flex-start;
     padding: 10px;
+    width: auto;
+    height: auto;
+}
+
+.menutop{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .logo img {
@@ -255,6 +265,26 @@ html, body {
     margin-left: 0%;
     padding: 5px;
   }  
+
+.produto{
+    color: #333;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.fotoproduto{
+    width: auto;
+    height: auto;
+    display: flex; 
+    flex-direction: column;
+    position:absolute;
+    
+}
+
+.conteudodireita{
+    margin-left: 10%;
+    overflow: auto;
+}
 
 .produtoslista{
     margin: auto;

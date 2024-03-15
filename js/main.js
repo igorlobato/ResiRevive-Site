@@ -134,14 +134,15 @@ $(function(){
                             type: 'GET',
                             url: 'http://localhost:3000/produtos/' + produto.id,
                             success: function(listaprodutos) {
-                                $produtos.append('<li>Tipo: ' + produto.tipo +
-                                '<br>Titulo: ' + produto.titulo +
-                                '<br>Descricao: ' + produto.descricao +
-                                '<br><br><img src="' + produto.foto1 + '" alt="Imagem" class="foto"><br>' +
+                                $produtos.append(
+                                '<div class="produto"><div class="fotoproduto"><img src="' + produto.foto1 + '" alt="Imagem" class="foto"></div><br>' +
+                                '<div class="conteudodireita"><div class="titulo">Titulo: ' + produto.titulo +
+                                '<br>Preço: ' + produto.preco +
+                                '</div><br>Tipo: ' + produto.tipo +
                                 '<br>Data: ' + produto.data +
-                                '<br>Hora: ' + produto.hora +
-                                '<br>Hora: ' + produto.condicao +
-                                '<br></li><br>');
+                                ' às ' + produto.hora +
+                                '<br>Condição: ' + produto.condicao +
+                                '<br></div></div><br>');
                             },
                         });
                     })},
