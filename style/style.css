@@ -67,6 +67,8 @@ body {
     color: rgb(0, 0, 0);
   }
 
+/*Index*/
+
 .login-container{
     width: 500px;
     height: 450px;
@@ -78,15 +80,37 @@ body {
 }
 
 #bannerCarousel{
-    max-width: 500px;
+    width: 90%;
+    height: 300px;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 100px;
+    border-radius:  30%;
+}
+
+.carousel-item{
+    height: 350px;
+    width: 100%;
+}
+
+.img-fluid{
+    border-radius:  30px !important;
+}
+
+.mt4{
+    height: auto;
+    width: 100% !important;
+}
+
+.row{
+    height: auto;
+    width: 90%;
+    justify-content: space-between;
 }
 
 .container{
-    max-width: 1000px;
-    justify-content: flex-end;
+    width: 90% !important;
+    justify-content: space-between;
 }
 
 .row .col-md-4 {
@@ -233,7 +257,7 @@ html, body {
 }
 
 .barralateralconta {
-    height: 100%;
+    height: auto;
     width: 300px;
     background-color: #f7f7f7;
     display: flex; 
