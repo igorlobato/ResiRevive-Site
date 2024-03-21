@@ -26,7 +26,7 @@
     <div class="conteudo">
         <div class="lista-anuncio produtoslista">
             <div class="main-content">
-                <ul id="produtos"></ul>
+                <ul id="produtostodos"></ul>
             </div>
         </div>
     </div>
@@ -38,7 +38,4 @@
         document.getElementById('termoPesquisado').innerText = termoPesquisado;
     </script>
 </body>
-<script>
-    var userId = <?php echo isset($_SESSION['id']) ? $_SESSION['id'] : 'null'; ?>;
-</script>
 </html>

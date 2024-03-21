@@ -1,6 +1,7 @@
 $(function(){
 
-    var $produtos = $('#produtos');
+    var $produtos = $('#produtos')
+    var $produtostodos = $('#produtostodos');
     var urlParams = new URLSearchParams(window.location.search);
     var produtosId = urlParams.get('id');
 
@@ -11,8 +12,8 @@ $(function(){
 
         let dataAtual = new Date();
 
-        let dataOnlineFormatada = dataAtual.toLocaleDateString();
-        let dataCreationFormatada = dataAtual.toLocaleTimeString();
+        let dataOnlineFormatada = dataAtual.toISOString();
+        let dataCreationFormatada = dataAtual.toISOString();
 
         let usuario = {
             email: $('#email').val(),
@@ -119,7 +120,7 @@ $(function(){
                     '<br><br><img src="' + produto.foto1 + '" alt="Imagem" class="foto"><br>' +
                     '<br>Data: ' + produto.data +
                     '<br>Hora: ' + produto.hora +
-                    '<br>Hora: ' + produto.condicao +
+                    '<br>Condição: ' + produto.condicao +
                     '<br>Postador: ' + produto.id_dono +
                     '<br></li>');
             },
@@ -157,4 +158,125 @@ $(function(){
                     }
                 });
             }
+            
+            if (produtosId) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:3000/posts/' + produto.id,
+                    success: function(produto) {
+                        $produto.append('<li>Tipo: ' + produto.tipo +
+                            '<br>Titulo: ' + produto.titulo +
+                            '<br><br><img src="' + produto.foto1 + '" alt="Imagem" class="foto"><br>' +
+                            '<br>Data: ' + produto.data +
+                            '<br>Hora: ' + produto.hora +
+                            '<br>Hora: ' + produto.condicao +
+                            '<br>Postador: ' + produto.id_dono +
+                            '<br></li>');
+                    },
+                    error: function() {
+                        alert('Erro ao carregar o post');
+                    }
+                });
+            } else {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:3000/produtos',
+                        success: function(produtostodos) {
+                            $.each(produtostodos, function(i, produto) {
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: 'http://localhost:3000/produtos/' + produto.id,
+                                        success: function(listaprodutos) {
+                                            var precoFormatado = produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                                            $produtostodos.append(
+                                            '<div class="produto"><div class="fotoproduto"><img src="' + produto.foto1 + '" alt="Imagem" class="foto"></div><br>' +
+                                            '<div class="conteudodireita"><div class="titulo">Titulo: ' + produto.titulo +
+                                            '</div><div class="preco">Preço: ' + precoFormatado +
+                                            '</div>Tipo: ' + produto.tipo +
+                                            '<br>Data: ' + produto.data +
+                                            ' às ' + produto.hora +
+                                            '<br>Condição: ' + produto.condicao +
+                                            '<br></div></div><br>');
+                                        },
+                                    });
+                                })
+                        },
+                            error: function() {
+                                alert('Erro ao carregar produtos');
+                            }
+                        });
+                    }    
+
+                    /*
+                    $(document).ready(function() {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const termoPesquisado = urlParams.get('q');
+                    
+                        if (termoPesquisado) {
+                            $.ajax({
+                                type: 'GET',
+                                url: 'http://localhost:3000/produtos?q=' + termoPesquisado,
+                                success: function(produtostodos) {
+                                    if (produtostodos.length > 0) {
+                                        $.each(produtostodos, function(i, produto) {
+                                            $.ajax({
+                                                type: 'GET',
+                                                url: 'http://localhost:3000/produtos/' + produto.id,
+                                                success: function(listaprodutos) {
+                                                    var precoFormatado = produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                                                    $produtostodos.append(
+                                                    '<div class="produto"><div class="fotoproduto"><img src="' + produto.foto1 + '" alt="Imagem" class="foto"></div><br>' +
+                                                    '<div class="conteudodireita"><div class="titulo">Titulo: ' + produto.titulo +
+                                                    '</div><div class="preco">Preço: ' + precoFormatado +
+                                                    '</div>Tipo: ' + produto.tipo +
+                                                    '<br>Data: ' + produto.data +
+                                                    ' às ' + produto.hora +
+                                                    '<br>Condição: ' + produto.condicao +
+                                                    '<br></div></div><br>');
+                                                },
+                                            })
+                                        });
+                                    } else {
+                                        $('#produtostodos').html('<p>Nenhum produto encontrado para o termo de pesquisa: ' + termoPesquisado + '</p>');
+                                    }
+                                },
+                                error: function() {
+                                    alert('Erro ao carregar produtos');
+                                }
+                            });
+                        } else {
+                            // Caso o termo de pesquisa seja vazio, mostrar todos os produtos
+                            $.ajax({
+                                type: 'GET',
+                                url: 'http://localhost:3000/produtos',
+                                success: function(produtos) {
+                                    if (produtos.length > 0) {
+                                        $.each(produtos, function(i, produto) {
+                                            $.ajax({
+                                                type: 'GET',
+                                                url: 'http://localhost:3000/produtos/' + produto.id,
+                                                success: function(listaprodutos) {
+                                                    var precoFormatado = produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                                                    $produtos.append(
+                                                    '<div class="produto"><div class="fotoproduto"><img src="' + produto.foto1 + '" alt="Imagem" class="foto"></div><br>' +
+                                                    '<div class="conteudodireita"><div class="titulo">Titulo: ' + produto.titulo +
+                                                    '</div><div class="preco">Preço: ' + precoFormatado +
+                                                    '</div>Tipo: ' + produto.tipo +
+                                                    '<br>Data: ' + produto.data +
+                                                    ' às ' + produto.hora +
+                                                    '<br>Condição: ' + produto.condicao +
+                                                    '<br></div></div><br>');
+                                                },
+                                            })
+                                        });
+                                    } else {
+                                        $('#produtostodos').html('<p>Nenhum produto cadastrado.</p>');
+                                    }
+                                },
+                                error: function() {
+                                    alert('Erro ao carregar produtos');
+                                }
+                            });
+                        }
+                    });*/
 });
