@@ -11,12 +11,16 @@
         <a href="index.php"><img src="../img/ResiReviveLogo.jpg" alt="Logo"></a>
     </div>
     <div class="search">
-        <div class="input-group">
-            <input id="q" type="text" class="form-control" placeholder="Buscar" style="border-radius: 10px; border: none; background-color: #e9e9e9;">
-            <div class="input-group-append">
-                <a href="pesquisa.php" class="logo"><img src="../img/ícones/lupa.png"></a>
+        <form action="pesquisa.php" method="POST" enctype="multipart/form-data" class="d-flex" role="search">
+            <div class="input-group">
+                <input name="busca" id="pesquisar" onkeyup="filtrar()" type="text" class="form-control" placeholder="Buscar" aria-label="Search" style="border-radius: 10px; border: none; background-color: #e9e9e9;">
+                <button value="Buscar" type="submit">Buscar</button>
+                <input type="hidden" name="buscar" value="find"/>
+                <div type="submit" class="input-group-append">
+                    <a type="submit" id="btn-buscar" class="logo"><img src="../img/ícones/lupa.png"></a>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <div class="navbar menutop">
         <div class="menu">

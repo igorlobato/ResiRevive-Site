@@ -5,7 +5,7 @@ $(function(){
     var urlParams = new URLSearchParams(window.location.search);
     var produtosId = urlParams.get('id');
 
-    
+    //Cadastro de Usuário
     $('#cadastrar').on('click', function(event){
         console.log('Botão de cadastrar clicado');
         event.preventDefault();
@@ -50,6 +50,7 @@ $(function(){
         });
     });
 
+    //Cadastro de Produto
     $('#envioanuncio').on('click', function(event){
         console.log('Botão de cadastrar produto clicado');
         event.preventDefault();
@@ -110,6 +111,7 @@ $(function(){
         });
     });
 
+    //Carregar produtos em Meus Anûncios, apenas onde o Id for igual ao do usuário logado.
     if (produtosId) {
         $.ajax({
             type: 'GET',
@@ -158,7 +160,8 @@ $(function(){
                     }
                 });
             }
-            
+            /*
+            //Carrega produtos em pesquisar.php
             if (produtosId) {
                 $.ajax({
                     type: 'GET',
@@ -280,3 +283,25 @@ $(function(){
                         }
                     });*/
 });
+
+window.onload = function(){
+    var form_buscar = document.querySelector("#form-buscar");
+    var div_busca = document.querySelector("#main-content");
+
+    form_buscar.addEventListener('submit', function(event){
+        event.preventDefault();
+        console.log('teste botão buscar');
+
+        var form = new FormData(form_buscar);
+
+        xmlHttpPost('ajax/buscar', function(){
+            beforeSend(function(){
+                div_busca.innerHTML = "Aguarde, estamos buscando...";
+            });
+
+            success(function(){
+                console.log(xhttp.responseText);
+            });
+        },form);
+    });
+}

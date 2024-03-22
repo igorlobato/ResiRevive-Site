@@ -26,7 +26,38 @@
     <div class="conteudo">
         <div class="lista-anuncio produtoslista">
             <div class="main-content">
-                <ul id="produtostodos"></ul>
+                <ul id="produtostodos">
+                <?php
+if(isset($_POST['buscar']) && $_POST['buscar'] == "find"){
+    $busca = $_POST['busca'];
+    if(empty($busca)){
+        echo "Digite alguma coisa";
+    } else{
+        $seleciona = $conn->query("SELECT * FROM produtos WHERE titulo LIKE '%$busca%' ORDER BY id DESC");
+        $conta = $seleciona->rowCount();
+
+        if($conta <= 0){
+            echo "<center>Nenhum produto encontrado!</center>";
+            echo "$busca";
+        }else{
+            while ($produto = $seleciona->fetch(PDO::FETCH_ASSOC)) {
+                // Aqui você exibe os detalhes do produto
+                $precoFormatado = number_format($produto['preco'], 2, ',', '.');
+                echo '<div class="produto">';
+                echo '<div class="fotoproduto"><img src="' . $produto['foto1'] . '" alt="Imagem" class="foto"></div><br>';
+                echo '<div class="conteudodireita">';
+                echo '<div class="titulo">Titulo: ' . $produto['titulo'] . '</div>';
+                echo '<div class="preco">Preço: R$ ' . $precoFormatado . '</div>';
+                echo 'Tipo: ' . $produto['tipo'];
+                echo '<br>Data: ' . $produto['data'] . ' às ' . $produto['hora'];
+                echo '<br>Condição: ' . $produto['condicao'];
+                echo '<br></div></div><br>';
+            }
+        }
+    }
+}
+?>
+                </ul>
             </div>
         </div>
     </div>
